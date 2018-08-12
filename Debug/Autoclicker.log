@@ -1,6 +1,0 @@
-﻿  Main.cpp
-c:\dev\autoclicker\functions.h(56): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
-c:\dev\autoclicker\main.cpp(59): warning C4007: 'WinMain': must be '__stdcall'
-c:\dev\autoclicker\main.cpp(126): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  LINK : C:\dev\Autoclicker\Debug\Autoclicker.exe not found or not built by the last incremental link; performing full link
-  Autoclicker.vcxproj -> C:\dev\Autoclicker\Debug\Autoclicker.exe
