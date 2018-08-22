@@ -7,10 +7,37 @@
 
 void click() //Defines the function.
 {
+	if (jitter)
+	{
+		if (clickcycle % 2)
+		{
+			POINT p;
+			if (GetCursorPos(&p))
+			{
+				int newx = p.x + 5;
+				int newy = p.y + 5;
+				SetCursorPos(newx, newy);
+			}
+		}
+	}
 	mouse_event(MOUSEEVENTF_LEFTDOWN, x, y, 0, 0); //Left mouse button is pressed.
-	mouse_event(MOUSEEVENTF_LEFTUP, x, y, 0, 0); //Left mouse button is released.
 
-												 //Used together to simulate one mouse click.
+
+	mouse_event(MOUSEEVENTF_LEFTUP, x, y, 0, 0); //Left mouse button is released.
+	if (jitter)
+	{
+		if (!(clickcycle % 2))
+		{
+			POINT n;
+			if (GetCursorPos(&n))
+			{
+				int revx = n.x - 5;
+				int revy = n.y - 5;
+				SetCursorPos(revx, revy);
+			}
+		}
+	}
+	clickcycle++;
 }
 
 void generate() //Defines the function.

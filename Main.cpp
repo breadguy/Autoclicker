@@ -22,7 +22,8 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) {
 	return written;
 }
 
-
+//Toggles
+BOOL jitter;
 
 //AutoClicker Bind (W.I.P)
 BOOL gotbind;
@@ -53,6 +54,7 @@ int rnd; //For the random number generation.
 //For the Click Function
 int x; //For the mouse click simulation.
 int y; //For the mouse click simulation.
+int clickcycle = 1;
 
 //Function Definitions/Declarations
 #include "Functions.h"
@@ -164,9 +166,9 @@ int WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int c
 
 		}
 		//Spawns a command prompt displaying information about the AutoClicker.
-		MessageBox(0, "[INSERT] Exits \n[HOME] Beeps \n\nPress OK to hide.", "Keybinds", MB_ICONINFORMATION);
+		MessageBox(0, "[INSERT] Exits \n[HOME] Beeps \n [END] Toggle Jitter \n\nPress OK to hide.", "Keybinds", MB_ICONINFORMATION);
 
-		while (1) //We don't want the program to close now do we?
+		while (1) //Main Loop
 		{
 			if (GetAsyncKeyState(keybind)) //If the key bound to the AutoClicker is pressed. (Hard coded at the time of making this comment but I plan on allowing it to be configured.)
 			{
@@ -187,6 +189,15 @@ int WinMain(HINSTANCE hinstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int c
 				Beep(330, 100); //Beep.
 			}
 
+			if (GetAsyncKeyState(VK_END))
+			{
+				jitter = !jitter; //Toggle Jitter Bool
+				if (jitter)
+					Beep(330, 100); //Beep.
+				else if (!jitter)
+					Beep(250, 100);//Beep.
+				Sleep(250);
+			}
 
 			if (GetAsyncKeyState(VK_INSERT)) //If INSERT is pressed.
 			{
